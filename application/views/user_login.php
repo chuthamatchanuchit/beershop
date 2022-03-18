@@ -291,7 +291,7 @@
   <form class="register-form" action="<?php echo site_url('./Welcome/openTable') ?>" method="post">
     <div class="hand"></div>
     <div class="hand rgt"></div>
-    <h1>Tidnueb Login&nbsp;<i style='font-size:35px' class='fas'>&#xf79f;</i></h1>
+    <h1 id="nametitle">Tidnueb Login&nbsp;<i style='font-size:35px' class='fas'>&#xf79f;</i></h1>
     <br>
     <div class="form-group">
       <label class="form-label">Number_table</label><br>
@@ -299,7 +299,7 @@
 
     </div>
     <div class="form-group">
-      <input id="password" type="text" required="required" class="form-control" name="customer_tel" />
+      <input id="password" type="text" required="required" class="form-control" name="customer_tel"  />
       <label class="form-label">Tel</label>
       <br>
       <button class="btn" type="submit">Login </button>

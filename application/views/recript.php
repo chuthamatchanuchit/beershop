@@ -97,7 +97,7 @@ $number_table = $this->session->userdata("number_table");
 
 <body>
 
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var show = function() {
             $('#myModal').modal('show');
         };
@@ -106,7 +106,7 @@ $number_table = $this->session->userdata("number_table");
         $(window).load(function() {
             var timer = window.setTimeout(show, 1000);
         });
-    </script>
+    </script> -->
 
     </br></br></br>
     <div class="container text-center mt-2">
@@ -115,10 +115,10 @@ $number_table = $this->session->userdata("number_table");
                 <h3 class="font-weight-bold">ร้านติดหนึบ</h3>
                 <h5 class="font-weight-bold">88/14 ถนน สวนตะไคร้ ตำบล วังตะกู อำเภอเมืองนครปฐม นครปฐม เบอร์โทร : 0863713338 </h5>
                 <br>
-                <h4 class="font-weight-bold">ใบเสร็จเก็บเงิน</h4>
+                <h4 id="titlebill" class="font-weight-bold">ใบเสร็จเก็บเงิน</h4>
                 <div class="text-center">
                     <button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
-                    <a href="<?php echo site_url('Welcome/closetable/') . $number_table; ?>" class="btn btn-danger" id="print-btn">สิ้นสุดการสั่งซื้อ</a>
+                    <a id="endcart" href="<?php echo site_url('Welcome/closetable/') . $number_table; ?>" class="btn btn-danger" id="print-btn">สิ้นสุดการสั่งซื้อ</a>
                 </div>
             </div>
 
@@ -220,7 +220,7 @@ $number_table = $this->session->userdata("number_table");
     </div>
     <!-- modal -->
 
-    <div id="myModal" class="modal fade">
+    <!-- <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
 
@@ -231,7 +231,7 @@ $number_table = $this->session->userdata("number_table");
 
             </div>
         </div>
-    </div>
+    </div> -->
 
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

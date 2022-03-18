@@ -77,7 +77,29 @@
 
                 <br>
 
-                <center><button type="submit" class="btn btn-outline-primary" onclick="return confirm('ยืนยัน');">Update</button></center>
+                <center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+                        Addmenu
+                    </button>
+                    <div class="modal" id="myModal2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">คุณต้องการเพิ่มเมนูหรือไม่</h4>
+                                </div>
+
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <a href="<?php echo site_url('Welcome/addimg') ?>"> <button type="submit" class="btn btn-primary">ยืนยัน</button></a>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
         </div>
     </div>
     <!-- End of Page Wrapper -->

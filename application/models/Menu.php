@@ -102,7 +102,7 @@ class Menu extends CI_Model
         $result = $this->db->get('admin');
         return $result;
     }
-
+  
     public function category()
     {
         $this->db->select('*');

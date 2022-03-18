@@ -238,7 +238,7 @@
         <div class="page-body">
           <div class="head">
             <br>
-            <h2 style="margin-top:5px;">ออกจากระบบเล้ว</h2>
+            <h2 id="logouttitle" style="margin-top:5px;">ออกจากระบบเเล้ว</h2>
           </div><br>
           <h1 style="text-align:center;">
             <div class="checkmark-circle">
@@ -247,7 +247,7 @@
 
             </div>
             <h1><br>
-              <center><span><a href="<?php echo site_url('Welcome/logout/'); ?><?php echo $number_table ?>"><button class="button" style="vertical-align:middle">ตกลง</button></a></span></center>
+              <center><span><a href="<?php echo site_url('Welcome/logout/'); ?><?php echo $number_table ?>"><button class="button" id="userlogout" style="vertical-align:middle">ตกลง</button></a></span></center>
         </div>
       </div>
     </div>

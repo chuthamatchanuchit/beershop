@@ -65,11 +65,15 @@
                                             <div class="row">
                                                 <?php foreach ($detail as $index => $rs) {
                                                     $sum[] = $rs->Num * $rs->Price; ?>
+                                                    <div class="col-6">OrderNo:<?php echo $rs->Id; ?></div>
+                                                    <div class="col-3"> <span><?php echo $rs->Date; ?></span></div>
+                                                    <div class="col-3"> <span><?php echo $rs->Time; ?></span></div>
 
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><a href="<?php echo site_url('Welcome/admin_opentable/') . $rs->Id; ?>"></a></div>
-                                                    <div class="col-4"> <span><?php echo $rs->Name; ?></span></div>
-                                                    <div class="col-4"> <span><?php echo $rs->Num; ?></span></div>
-                                                    <div class="col-4"> <span><?php echo $rs->Price; ?>&nbsp;บาท</span></div>
+                                                    <div class="col-6"> <span><?php echo $rs->Name; ?></span></div>
+                                                    <div class="col-3"> <span><?php echo $rs->Num; ?></span></div>
+                                                    <div class="col-3"> <span><?php echo $rs->Price; ?>&nbsp;บาท</span></div>
+
+
                                                     </td>
 
                                                 <?php } ?>
@@ -81,11 +85,32 @@
                                                 </div>
                                             </div>
                                             <?php if ($rs->status == "open") { ?>
-                                                <a href="<?php echo site_url('Welcome/close/') . $rs->Id; ?>"><button type="button" class="btn btn-warning">ปิดบิล</button></a>
+                                                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal4">
+                                                    ปิดบิล
+                                                </button>
+                                                <div class="modal" id="myModal4">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">คุณต้องการปิดโต๊ะหรือไม่</h4>
+                                                            </div>
+
+                                                            <!-- Modal footer -->
+                                                            <div class="modal-footer">
+                                                                <a href="<?php echo site_url('Welcome/close/') . $rs->Id; ?>"> <button type="submit" class="btn btn-primary">ยืนยัน</button></a>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <a href="<?php echo site_url('Welcome/slip/') . $rs->Id; ?>"><button type="button" class="btn btn-success">ปริ้นใบเสร็จ</button></a>
 
                                             <?php } else { ?>
                                                 <a href=""><button type="button" class="btn btn-secondary" disabled>ปิดบิล</button></a>
+                                                <a href="<?php echo site_url('Welcome/table_close'); ?>"><button type="button" class="btn btn-info">ย้อนกลับ</button></a>
                                             <?php } ?>
                                         </div>
 

@@ -52,9 +52,9 @@
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="<?php echo site_url('Welcome/admin_menu'); ?>">ทั้งหมด</a>
-              <a class="dropdown-item" href="<?php echo site_url('Welcome/showDrink'); ?>">เครื่องดื่ม</a>
-              <a class="dropdown-item" href="<?php echo site_url('Welcome/showFood'); ?>">อาหาร</a>
-              <a class="dropdown-item" href="<?php echo site_url('Welcome/showSet'); ?>">ชุดเซ็ต</a>
+              <a class="dropdown-item" href="<?php echo site_url('Welcome/showDrink1'); ?>">เครื่องดื่ม</a>
+              <a class="dropdown-item" href="<?php echo site_url('Welcome/showFood1'); ?>">อาหาร</a>
+              <a class="dropdown-item" href="<?php echo site_url('Welcome/showSet1'); ?>">ชุดเซ็ต</a>
             </div>
           </div>
         </form>
@@ -80,7 +80,7 @@
             <td><?php echo $rs->m_name; ?></td>
             <td><?php echo $rs->m_price; ?>&nbsp; บาท</td>
             <td><?php echo $rs->c_name; ?></td>
-            <td><a href="<?php echo site_url('Welcome/del/') . $rs->m_id; ?>" onclick="return confirm('ยืนยัน');"><button type="button" class="btn btn-danger">Delete</button></a>
+            <td><a href="<?php echo site_url('Welcome/del/') . $rs->m_id; ?>" ><button type="button" class="btn btn-danger">Delete</button></a>
               <a href="<?php echo site_url('Welcome/edit/') . $rs->m_id; ?>"><button type="button" class="btn btn-warning">Edit</button></a>
             </td>
           </tr>

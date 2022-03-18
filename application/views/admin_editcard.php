@@ -65,7 +65,27 @@
 
             <input type="hidden" name="m_id" class="from-control" value="<?php echo $query->m_id; ?>">
             <center><a href="<?php echo site_url('Welcome/admin_menu'); ?>" class="btn btn-warning" role="button">ย้อนกลับ</a>
-              <button type="submit" class="btn btn-primary" onclick="return confirm('ยืนยัน');">แก้ไข</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">
+    แก้ไข
+  </button>
+              <div class="modal" id="myModal3">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                      <h4 class="modal-title">คุณต้องการแก้ไขหรือไม่</h4>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                    <a href="<?php echo site_url('Welcome/editdata') ?>"> <button type="submit" class="btn btn-primary">ยืนยัน</button></a>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </center>
           </div>
         </div>

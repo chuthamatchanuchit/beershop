@@ -55,9 +55,6 @@ class Welcome extends CI_Controller
     $this->load->view('admin_addmenu', $result);
   }
 
-
-
-
   public function admin_opentable($Id)
   {
     $result['detail'] = $this->Menu->detailTable($Id);
@@ -67,26 +64,26 @@ class Welcome extends CI_Controller
   public function close($Id)
   {
     $this->Menu->closetable($Id);
-    echo '<script> alert("ปิดโต๊ะสำเร็จ") </script>';
+    
     redirect("welcome/admin_home", "refresh");
   }
 
-
+///////////////////////slip/////////////////////////////////
   public function slip($Id)
   {
     $result['detail'] = $this->Menu->detailTable($Id);
     $this->load->view('slip', $result);
   }
 
+//////////////////////////////////////////////////////////
 
-
-
+///////////////menu////////////////////////////////////
   public function menu()
   {
     $data['Menu'] = $this->Menu->category();
     $this->load->view('user_menu', $data);
   }
-
+/////////////////////////////////////////////////////////////
   public function edit($m_id)
   {
     $data['query'] = $this->Menu->read($m_id);
@@ -97,14 +94,14 @@ class Welcome extends CI_Controller
   {
     $this->Menu->edit();
 
-    echo '<script> alert("แก้ไขสำเร็จ") </script>';
+    
     redirect("welcome/admin_menu", "refresh");
   }
 
   public function addimg()
   {
     $this->Menu->addimg();
-    redirect('welcome/admin_addmenu', 'refresh');
+    redirect('welcome/admin_menu', 'refresh');
   }
 
   public function login($table)
@@ -112,13 +109,24 @@ class Welcome extends CI_Controller
     $data['table'] = $table;
     $this->load->view('user_login', $data);
   }
+  
+  public function loginfail($number_table)
+  {
+
+    
+    redirect("welcome/login/$number_table", "refresh");
+
+  }
+
+
+ 
 
   public function del($m_id)
   {
     $this->Menu->deldata($m_id);
     redirect('welcome/admin_menu', 'refresh');
   }
-
+/////////////////cart/////////////////////////
   public function cart()
   {
     $data['items'] = array_values(unserialize($this->session->userdata('cart')));
@@ -132,37 +140,42 @@ class Welcome extends CI_Controller
     $result['Menu'] = $this->Menu->detail();
     $this->load->view('cart', $result);
   }
-
+//////////////////////////////////////////////////
   function openTable()
   {
     // เตรียมข้อมูล
     $number_table =  $this->input->post('number_table', TRUE);
     $customer_tel =  $this->input->post('customer_tel', TRUE);
 
+    if (strlen($customer_tel) < 10) {
 
-    date_default_timezone_set('asia/bangkok');
-    $table_open =  date('d/m/y H:i:s');
+      $data['table'] =$this->input->post('number_table', TRUE);
+      $this->load->view('user_login_fail',$data);
+     
+    } else {
+      date_default_timezone_set('asia/bangkok');
+      $table_open =  date('d/m/y H:i:s');
 
-    // เตรียมใส่ array 
-    $data = array(
-      'number_table' => $number_table,
-      'customer_tel' => $customer_tel,
-      'table_open' => $table_open
-    );
+      // เตรียมใส่ array 
+      $data = array(
+        'number_table' => $number_table,
+        'customer_tel' => $customer_tel,
+        'table_open' => $table_open
+      );
 
-    $this->session->set_userdata($data);
+      $this->session->set_userdata($data);
 
-    // เชื่อมต่อ model 
-    $this->db->insert('table', $data);
+      // เชื่อมต่อ model 
+      $this->db->insert('table', $data);
 
-    $data['number_table'] = $number_table;
-    $data['customer_tel'] = $customer_tel;
-    $data['Menu'] = $this->Menu->category();
+      $data['number_table'] = $number_table;
+      $data['customer_tel'] = $customer_tel;
+      $data['Menu'] = $this->Menu->category();
 
 
-    $this->load->view('user');
-    //redirect('welcome/index', 'refresh');
-
+      $this->load->view('user');
+      //redirect('welcome/index', 'refresh');
+    }
   }
 
   function closetable($table)
@@ -208,20 +221,21 @@ class Welcome extends CI_Controller
 
     $user = $query->row();
 
-    if ($user->username) {
+    if ($user) {
 
       $_SESSION['id'] = $user->id;
       $_SESSION['username'] = $user->username;
       $_SESSION['password'] = $user->password;
 
-      echo '<script> alert("ล็อคอินสำเร็จ") </script>';
+     
       redirect("welcome/admin_home", "refresh");
     } else {
+      $this->load->view('login_fail');
 
-      echo '<script> alert("อีเมลล์หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบอีกครั้ง") </script>';
-      redirect("welcome/admin_login", "refresh");
     }
   }
+
+
   public function user()
   {
     $data = array(
@@ -250,7 +264,7 @@ class Welcome extends CI_Controller
     $result['menu'] = $this->Menu->getSearchMenu($data);
     $this->load->view('admin_search', $result);
   }
-
+//////////////////////////////user searchmenu/////////////////////////////
   public function searchmenu()
   {
     $data = $this->input->post('searchmenu');
@@ -380,7 +394,7 @@ class Welcome extends CI_Controller
     // print_r($data);
     $this->load->view('recript', $data);
   }
-  ////////////จบ/////////////////////////////////////
+  /////////////////////////////////////////////////
 
 
 
@@ -410,8 +424,8 @@ class Welcome extends CI_Controller
       redirect('welcome/cart');
     }
   }
-
-
+///////////////////////////////////////////////////////////////////////
+///////////////////////////เลือกเมนู/////////////////////////////////////
   public function buy($m_id)
   {
     // $data['items'] = array_values(unserialize($this->session->userdata('cart')));
@@ -449,7 +463,9 @@ class Welcome extends CI_Controller
 
     redirect('welcome/cart');
   }
+////////////////////////////////////////////////////////////////////
 
+/////////////////////สั่งซื้อ/////////////////////////////////////////
   private function exists($m_id)
   {
     $cart = array_values(unserialize($this->session->userdata('cart')));
@@ -458,7 +474,7 @@ class Welcome extends CI_Controller
         return $i;
       }
     }
-    
+
     return -1;
   }
   private function total()
@@ -481,7 +497,7 @@ class Welcome extends CI_Controller
     redirect('welcome/cart');
   }
 
-
+///////////////////////////////////////////////////////////////////////////
 
   public function showFood1()
   {
@@ -500,8 +516,7 @@ class Welcome extends CI_Controller
     $data['Menu'] = $this->Menu->showdataSet();
     $this->load->view('admin_menu', $data);
   }
-  //////////////////end add to card//////////////////
-
+ 
 
 
   ////////////////// Bill //////////////////
@@ -511,7 +526,6 @@ class Welcome extends CI_Controller
 
     // print_r($result);
     $this->load->view('user_bill', $result);
-   
   }
   public function bill_detail($num)
   {

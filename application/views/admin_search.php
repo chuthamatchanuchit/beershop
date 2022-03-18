@@ -53,9 +53,9 @@
             </button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="<?php echo site_url('Welcome/admin_menu'); ?>">ทั้งหมด</a>
-              <a class="dropdown-item" href="<?php echo site_url('Welcome/showDrink'); ?>">เครื่องดื่ม</a>
-              <a class="dropdown-item" href="<?php echo site_url('Welcome/showFood'); ?>">อาหาร</a>
-              <a class="dropdown-item" href="<?php echo site_url('Welcome/showSet'); ?>">ชุดเซ็ต</a>
+              <a class="dropdown-item" href="<?php echo site_url('Welcome/showDrink1'); ?>">เครื่องดื่ม</a>
+              <a class="dropdown-item" href="<?php echo site_url('Welcome/showFood1'); ?>">อาหาร</a>
+              <a class="dropdown-item" href="<?php echo site_url('Welcome/showSet1'); ?>">ชุดเซ็ต</a>
             </div>
           </div>
         </form>
@@ -102,7 +102,7 @@
         </td>
         <td><?php echo $result["m_price"]; ?>&nbsp; บาท </td>
         <td><?php echo $result["c_name"]; ?> </td>
-        <td><a href="<?php echo site_url('Welcome/del/'); ?>/<?php echo $result["m_id"]; ?>" onclick="return confirm('ยืนยัน');"><button type="button" class="btn btn-primary">Delete</button></a>
+        <td><a href="<?php echo site_url('Welcome/del/'); ?><?php echo $result["m_id"]; ?>" ><button type="button" class="btn btn-Danger">Delete</button></a>
           <a href="<?php echo site_url('Welcome/edit/'); ?><?php echo $result["m_id"]; ?>"><button type="button" class="btn btn-warning">Edit</button></a>
         </td>
         </tr>

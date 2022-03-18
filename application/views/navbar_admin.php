@@ -45,11 +45,29 @@
     <hr class="sidebar-divider d-none d-md-block">
 
     <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('Welcome/admin_login'); ?>" onclick="return confirm('คุณต้องการออกจากระบบหรือไม่?');">
+        <a class="nav-link" href="<?php echo site_url('Welcome/admin_login'); ?>" data-toggle="modal" data-target="#myModal">
             <i class="fas fa-fw fa-cog"></i>
             <span>Logout</span></a>
     </li>
 
+    <!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">คุณต้องการออกจากระบบหรือไม่</h4>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        <a href="<?php echo site_url('Welcome/admin_login'); ?>"> <button type="button" class="btn btn-primary">ยืนยัน</button></a>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </ul>
 <!-- End of Sidebar -->

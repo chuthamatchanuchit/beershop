@@ -8,7 +8,9 @@
   <title>Cart</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -182,8 +184,28 @@
         <?php if ($items == null || "") { ?>
 
         <?php  } else { ?>
-          <a href="<?php echo site_url('Welcome/recript_ins'); ?>" class="btn btn-success" role="button" onclick="return confirm('ยืนยัน');">บันทึกรายการสั่งซื้อ>></a></center>
-<?php } ?>
+          <a href="<?php echo site_url('Welcome/recript_ins'); ?>" class="btn btn-success" id="confirmcart" role="button" data-toggle="modal" data-target="#myModal">บันทึกรายการสั่งซื้อ>></a></center>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4  class="modal-title">ยืนยันการสั่งซื้อ</h4>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+        <a href="<?php echo site_url('Welcome/recript_ins'); ?>" class="btn btn-success" role="button" >ยืนยัน</a></center>
+       
+          <button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+          <?php } ?>
 <br>
 
 

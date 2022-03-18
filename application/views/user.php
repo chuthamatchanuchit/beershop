@@ -236,7 +236,7 @@
         <div class="page-body">
           <div class="head">
             <br>
-            <h2 style="margin-top:5px;">เข้าสู่ระบบสำเร็จ</h2>
+            <h2 id="logintitles" style="margin-top:5px;">เข้าสู่ระบบสำเร็จ</h2>
           </div><br>
           <h1 style="text-align:center;">
             <div class="checkmark-circle">
@@ -245,7 +245,7 @@
 
             </div>
             <h1><br>
-              <center><span><a href="<?php echo site_url('./Welcome/menu') ?>"><button class="button" style="vertical-align:middle">ตกลง</button></a></span></center>
+              <center><span><a href="<?php echo site_url('./Welcome/menu') ?>"><button class="button" id="loginsucess" style="vertical-align:middle">ตกลง</button></a></span></center>
         </div>
       </div>
     </div>
